@@ -39,9 +39,9 @@ const Auth = (props) => {
         }
     };
 
-    const renderField = (name, value, valid) => (
+    const renderField = (name, value, valid, type) => (
         <div>
-            <input onChange={handleChange(name)} type="text" value={value}/>
+            <input onChange={handleChange(name)} type={type} value={value}/>
             { !valid && <p style={{color: 'red'}}>Required</p>}
         </div>
     );
@@ -52,8 +52,8 @@ const Auth = (props) => {
 
     return (
         <form onSubmit={handleSubmitAuthenticate}>
-            {renderField('name', values.name, isValidName)}
-            {renderField('password', values.password, isValidPass)}
+            {renderField('name', values.name, isValidName, 'text')}
+            {renderField('password', values.password, isValidPass, 'password')}
             {renderButton('login')}
         </form>
     )
